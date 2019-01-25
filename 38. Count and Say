@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+        int i=1;
+        string res="1";
+        while(i<n){
+            int count=0;
+            char c=res.at(0);
+            vector<char> st;
+            for(int j=0;j<=res.length();j++){
+                if(j!=res.length() && res.at(j)==c){
+                    count++;
+                }else{
+                    st.push_back('0'+count);
+                    st.push_back(c);
+                    if(j!=res.length()){
+                        count=1;
+                        c=res.at(j);
+                    }
+                }
+            }
+            res.clear();
+            res.append(st.begin(),st.end());
+            i++;
+        }
+        
+        return res;
+    }
+};
